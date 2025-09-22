@@ -1,5 +1,5 @@
 ﻿  Sistemes.cpp
-C:\Users\MaximoAlberoFernande\Documents\SistemesOperatius\SistemesOperatius\Sistemes\1TutorialThreads\ThreadTutorial.h(175,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\MaximoAlberoFernande\Documents\SistemesOperatius\SistemesOperatius\Sistemes\1TutorialThreads\ThreadTutorial.h(185,20): warning C4018: '<': signed/unsigned mismatch
   (compiling source file 'Sistemes.cpp')
   
   Sistemes.vcxproj -> C:\Users\MaximoAlberoFernande\Documents\SistemesOperatius\SistemesOperatius\x64\Debug\Sistemes.exe

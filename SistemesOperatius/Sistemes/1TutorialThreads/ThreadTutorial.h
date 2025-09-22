@@ -4,6 +4,7 @@
 #include <thread>
 #include <chrono> //time
 #include <list>
+#include <mutex>
 
 #pragma region Functions Declaration Header
 
@@ -26,14 +27,16 @@ void Example07();
 #pragma region Global Variables
 
 std::chrono::system_clock::time_point startDate;
+std::mutex* consoleMutex;
 
 #pragma endregion
 
 void ThreadTutorialTest() {
 
+	consoleMutex = new std::mutex();
 	startDate = std::chrono::system_clock::now();
 
-	int exampleUsed = 7; //Change this variable for the use of different examples
+	int exampleUsed = 6; //Change this variable for the use of different examples
 
 	switch (exampleUsed) {
 	case 1:
@@ -72,7 +75,14 @@ void PrintElapsedTime(
 	std::string threadName) {
 	
 	std::chrono::duration<double> elapsedTime = end - start;
-	std::cout << "Thread: " << threadName << " - Elapsed time: " << elapsedTime.count() << " seconds" << std::endl;
+
+	consoleMutex->lock();
+	std::cout << "Thread: " << threadName << 
+		" - Elapsed time: " << elapsedTime.count() << " seconds" << std::endl;
+	//L'espai entre el lock i l'unlock, ha de ser sempre 
+	//les linies minimes estrictament necessaries
+	//s'ha de protegir lo que es perillos
+	consoleMutex->unlock();
 }
 
 void Count(unsigned long long maxCounter, std::string threadName) {
